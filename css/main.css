@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* Assignment 1 | COMP1073 Client-Side JavaScript */
+body{
+  background-color: yellow;
+  color: white;
+  text-align: center;
+}
+
+button{
+  color: white;
+  padding: 20px;
+  margin: 180px 20px 20px 20px;
+  border-radius: 20px;
+}
+
+.first{
+  background-color: purple;
+}
+.second{
+  background-color: blue;
+}
+.third{
+  background-color: green;
+}
+.fourth{
+  background-color: orange;
+}
+.fifth{
+  background-color: pink;
+}
+.sen{
+  background-color: black;
+}

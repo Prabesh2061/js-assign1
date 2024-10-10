@@ -1,16 +1,46 @@
 @charset "utf-8";
 /* Assignment 1 | COMP1073 Client-Side JavaScript */
 body{
+  font-family: Arial, Helvetica, sans-serif;
   background-color: yellow;
-  color: white;
+  color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1, h2{
   text-align: center;
+}
+
+.soundBtn{
+  gap: 20px;
+}
+
+.soundBtn, .extraBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.extraBtn{
+  margin: 0;
 }
 
 button{
   color: white;
   padding: 20px;
-  margin: 180px 20px 20px 20px;
+  margin: 20px;
   border-radius: 20px;
+}
+
+button:hover{
+  cursor: pointer;
+  padding: 25px;
+}
+
+button:active{
+  opacity: 0.8;
 }
 
 .first{
@@ -30,4 +60,30 @@ button{
 }
 .sen{
   background-color: black;
+}
+.reset{
+  background-color: red;
+}
+.story{
+  background-color: brown;
+}
+
+ul{
+  padding: 0;
+}
+
+ul li{
+  list-style: none;
+  text-align: center;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.vertical{
+  height: auto;
+  text-align: center;
+}
+
+.speakingWords{
+  text-decoration: line-through;
 }

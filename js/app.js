@@ -39,20 +39,21 @@ function speakNow(text) {
 	synth.speak(utterThis);
 }
 
-function countChecker(num){
+function countChecker(num, arr){
 	var countIncrement = ++count[`count${num}`];
-	if(countIncrement>4){
+	if(countIncrement>arr.length-1){
 		count[`count${num}`] = 0;
 	}
 }
 
 function makeSentence(arr, num){
-	// method to check the if same button is pressed
-	let items = document.querySelector(`item${num}`);
+	let items = document.querySelectorAll(`.item${num} li`);
 	if(sentenceChecker(arr)){
 		for (let i = 0; i < sentence.length; i++) {
 			if(arr.includes(sentence[i])){
-				sentence[i] = arr[num];
+				items.forEach(e => {
+					sentence[i] = arr[num];
+				});
 			}
 		}
 	}else{
@@ -69,41 +70,50 @@ function sentenceChecker(arr){
 	return false;
 }
 
-function crossWords(num){
-	let items = document.querySelector(`.item${num}`);
+function crossWords(num, word){
+	let items = document.querySelectorAll(`.item${num} li`);
 	items.forEach(e => {
-		
+		e.classList.remove("speakingWords");
+		if(e.innerHTML == word){
+			e.classList.add("speakingWords");
+			return;
+		}
 	});
 }
 
 firstButton.onclick = function() {
 	speakNow(nouns[count.count1]);
 	makeSentence(nouns, count.count1);
-	countChecker(1);
+	crossWords(1, nouns[count.count1]);
+	countChecker(1, nouns);
 }
 
 secondButton.onclick = function() {
 	speakNow(verbs[count.count2]);
 	makeSentence(verbs, count.count2);
-	countChecker(2);
+	crossWords(2, verbs[count.count2]);
+	countChecker(2, verbs);
 }
 
 thirdButton.onclick = function() {
 	speakNow(adjectives[count.count3]);
 	makeSentence(adjectives, count.count3);
-	countChecker(3);
+	crossWords(3, adjectives[count.count3]);
+	countChecker(3, adjectives);
 }
 
 fourthButton.onclick = function() {
 	speakNow(noun[count.count4]);
 	makeSentence(noun, count.count4);
-	countChecker(4);
+	crossWords(4, noun[count.count4]);
+	countChecker(4, noun);
 }
 
 fifthButton.onclick = function() {
 	speakNow(settings[count.count5]);
 	makeSentence(settings, count.count5);
-	countChecker(5);
+	crossWords(5, settings[count.count5]);
+	countChecker(5, settings);
 }
 
 sen.onclick = function() {
@@ -127,4 +137,16 @@ reset.onclick = function(){
 		count5: 0
 	};
 	sentence.length = 0;
+
+	resetUnderline();
+}
+
+function resetUnderline(){
+	// removing the underline effect
+	for (let i = 1; i < 6; i++) {
+		let items = document.querySelectorAll(`.item${i} li`);
+		items.forEach(e => {
+			e.classList.remove("speakingWords");
+		});
+	}
 }

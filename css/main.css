@@ -86,4 +86,6 @@ ul li{
 
 .speakingWords{
   text-decoration: line-through;
+  font-size: 20px;
+  font-weight: 600;
 }
